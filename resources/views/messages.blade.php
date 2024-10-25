@@ -9,12 +9,20 @@
 <body>
     <div class="container">
         <h1>Prueba superada</h1>
+
+        <!-- Si no hay mensajes, muestra un mensaje -->
         @if($messages->isEmpty())
             <p>No hay mensajes en la base de datos</p>
         @else
+            <!-- Muestra los mensajes en una lista, con color y, si está disponible, una imagen -->
             <ul>
                 @foreach($messages as $message)
-                    <li>{{ $message->text }}</li>
+                    <li style="color: {{ $message->color }}">
+                        {{ $message->text }}
+                        @if($message->image_url)
+                            <img src="{{ $message->image_url }}" alt="Imagen" style="max-width: 100px; display: block; margin-top: 5px;">
+                        @endif
+                    </li>
                 @endforeach
             </ul>
         @endif
