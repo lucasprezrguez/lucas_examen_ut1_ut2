@@ -10,15 +10,12 @@
     <div class="container">
         <h1>Eliminar Mensajes</h1>
         
-        <!-- Si no hay mensajes, muestra un mensaje -->
         @if($messages->isEmpty())
             <p>No hay mensajes disponibles para eliminar.</p>
         @else
-            <!-- Formulario para enviar los IDs de los mensajes seleccionados -->
             <form action="{{ url('/messages/delete') }}" method="POST">
                 @csrf
                 <ul>
-                    <!-- Lista de mensajes con checkbox para seleccionar los que se eliminarán -->
                     @foreach($messages as $message)
                         <li>
                             <input type="checkbox" name="messages[]" value="{{ $message->id }}">
